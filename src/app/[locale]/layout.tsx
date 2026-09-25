@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Alexandria, Outfit } from "next/font/google";
 import { NextIntlClientProvider } from 'next-intl';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from 'sonner';
@@ -92,6 +93,7 @@ export default async function LocaleLayout({
             <Toaster position="bottom-right" />
           </ThemeProvider>
         </NextIntlClientProvider>
+        <SpeedInsights />
       </body>
     </html>
   );
