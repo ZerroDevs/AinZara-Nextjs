@@ -13,7 +13,6 @@ import { Contact } from "@/components/sections/Contact";
 
 export async function generateMetadata({ params }: { params: Promise<{locale: string}> }) {
   const { locale } = await params;
-  setRequestLocale(locale);
   // Using a fallback since ServicesHero translations were slightly modified in the full json dump, but I'll use the main one.
   const mainT = await getTranslations({ locale });
   return {
@@ -60,7 +59,7 @@ export default async function ServicesPage({
                   {t("nav_services")} & Facades
                 </span>
               </nav>
-              <h1 className="text-4xl md:text-5xl ltr:lg:text-[4rem] rtl:lg:text-5xl font-bold tracking-tight text-foreground ltr:leading-[1.1] rtl:leading-[1.4] mb-6">
+              <h1 className="text-4xl md:text-5xl lg:text-[4rem] font-bold tracking-tight text-foreground leading-[1.1] mb-6">
                 {t("services_hero_title")}
               </h1>
               <p className="text-lg md:text-xl text-foreground mb-8 font-medium">
@@ -80,4 +79,3 @@ export default async function ServicesPage({
     </>
   );
 }
-

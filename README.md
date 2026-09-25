@@ -72,4 +72,5 @@ This project is configured for a purely static export (`output: "export"`).
 See the `LICENSE` file for full terms and conditions.
 
 ---
-*Built by [ZerroDevs](https://github.com/ZerroDevs).*
+
+_Built by [ZerroDevs](https://github.com/ZerroDevs)._

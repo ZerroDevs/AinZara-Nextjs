@@ -7,7 +7,6 @@ import { ChevronRight } from 'lucide-react';
 import { buttonVariants } from '@/components/ui/button';
 import { Outfit } from "next/font/google";
 import enMessages from '../../messages/en.json';
-import { setRequestLocale } from 'next-intl/server';
 import './globals.css';
 
 const outfit = Outfit({
@@ -16,11 +15,8 @@ const outfit = Outfit({
 });
 
 export default function GlobalNotFound() {
-  setRequestLocale('en');
-
   return (
-    <html lang="en" dir="ltr" suppressHydrationWarning>
-      <body className={`${outfit.className} antialiased min-h-screen flex flex-col bg-background text-foreground`}>
+    <div className={`${outfit.className} antialiased min-h-screen flex flex-col bg-background text-foreground`}>
         <NextIntlClientProvider locale="en" messages={enMessages}>
           <Header />
           <main className="flex-1">
@@ -39,7 +35,7 @@ export default function GlobalNotFound() {
               <div className="container relative z-10 px-4 md:px-8 max-w-7xl mx-auto">
                 <div className="max-w-xl md:max-w-2xl flex flex-col items-start text-start">
                   <nav className="flex items-center gap-2 text-muted-foreground font-semibold text-[15px] mb-6">
-                    <Link href="/" className="hover:text-[var(--primary)] transition-colors">
+                    <Link href="/" className="hover:text-[#60a5fa] transition-colors">
                       {enMessages.nav_home}
                     </Link>
                     <ChevronRight className="h-4 w-4" />
@@ -62,7 +58,6 @@ export default function GlobalNotFound() {
           </main>
           <Footer />
         </NextIntlClientProvider>
-      </body>
-    </html>
+    </div>
   );
 }

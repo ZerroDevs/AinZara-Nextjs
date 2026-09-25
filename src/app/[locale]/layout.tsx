@@ -25,7 +25,6 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  setRequestLocale(locale);
   const t = await getTranslations({ locale });
   
   return {
@@ -87,8 +86,8 @@ export default async function LocaleLayout({
       <body
         className={`${fontClass} antialiased min-h-screen flex flex-col`}
       >
-        <NextIntlClientProvider locale={locale} messages={messages}>
-          <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+        <NextIntlClientProvider messages={messages}>
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             {children}
             <Toaster position="bottom-right" />
           </ThemeProvider>
@@ -97,4 +96,3 @@ export default async function LocaleLayout({
     </html>
   );
 }
-
