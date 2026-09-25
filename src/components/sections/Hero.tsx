@@ -50,7 +50,7 @@ export function Hero() {
           >
             <Link 
               href="/#contact" 
-              className={buttonVariants({ size: "lg", className: "px-8 py-6 text-[15px] font-bold rounded-md bg-[#93c5fd] hover:bg-[#60a5fa] text-black border-none" })}
+              className={buttonVariants({ size: "lg", className: "px-8 py-6 text-[15px] font-bold rounded-md bg-[hsl(24.5, 93%, 70%)] hover:bg-[var(--primary)] text-black border-none" })}
             >
               {t("hero_btn")}
             </Link>

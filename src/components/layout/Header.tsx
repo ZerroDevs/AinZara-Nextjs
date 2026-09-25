@@ -135,17 +135,17 @@ export function Header() {
           <div className="flex items-center gap-2">
             {/* Actions Desktop */}
             <div className="hidden md:flex gap-3 items-center">
-              <Link href="/#contact" className={buttonVariants({ variant: "default", size: "default", className: "rounded-md font-bold px-6 bg-[#93c5fd] hover:bg-[#60a5fa] text-black" })}>
+              <Link href="/#contact" className={buttonVariants({ variant: "default", size: "default", className: "rounded-md font-bold px-6 bg-primary/90 hover:bg-primary border border-primary/50 text-primary-foreground backdrop-blur-md shadow-sm" })}>
                 {t("nav_contact")}
               </Link>
-              <Button variant="outline" size="sm" onClick={toggleLang} className={`rounded-full font-bold px-4 transition-colors ${isScrolled ? "bg-background border-muted-foreground/20" : "bg-white/80 backdrop-blur-md border-transparent hover:bg-white"}`}>
+              <Button variant="outline" size="sm" onClick={toggleLang} className={`rounded-full font-bold px-4 transition-colors ${isScrolled ? "bg-background border-border" : "bg-white/50 dark:bg-white/5 backdrop-blur-md border-white/20 dark:border-white/10 hover:bg-white/80 dark:hover:bg-white/10"}`}>
                 <Globe className="h-4 w-4 rtl:ml-2 ltr:mr-2" />
                 {locale === "en" ? "العربية" : "English"}
               </Button>
               <Button
                 variant="outline"
                 size="icon"
-                className={`rounded-full transition-colors ${isScrolled ? "bg-background border-muted-foreground/20" : "bg-white/80 backdrop-blur-md border-transparent hover:bg-white"}`}
+                className={`rounded-full transition-colors ${isScrolled ? "bg-background border-border" : "bg-white/50 dark:bg-white/5 backdrop-blur-md border-white/20 dark:border-white/10 hover:bg-white/80 dark:hover:bg-white/10"}`}
                 onClick={() => setTheme(theme === "light" ? "dark" : "light")}
                 aria-label="Toggle theme"
               >
@@ -208,7 +208,7 @@ export function Header() {
           {/* Elevated Contact CTA */}
           <Link
             href="/#contact"
-            className="w-full text-center py-4 rounded-xl font-bold bg-gradient-to-r from-blue-600 to-blue-400 hover:from-blue-700 hover:to-blue-500 text-white shadow-lg shadow-blue-500/30 active:scale-95 transition-all text-lg"
+            className="w-full text-center py-4 rounded-xl font-bold bg-primary/90 hover:bg-primary border border-primary/50 text-primary-foreground backdrop-blur-md shadow-lg shadow-primary/20 active:scale-95 transition-all text-lg"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             {t("nav_contact")}

@@ -106,7 +106,7 @@ export function Products() {
               onClick={() => setActiveTab(category.id)}
               className={`px-6 py-2.5 rounded-full text-[15px] font-bold transition-all ${
                 activeTab === category.id 
-                  ? "bg-[#60a5fa] text-black shadow-md scale-105" 
+                  ? "bg-[var(--primary)] text-black shadow-md scale-105" 
                   : "bg-muted/50 text-muted-foreground hover:bg-muted hover:text-foreground"
               }`}
             >

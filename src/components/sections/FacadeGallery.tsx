@@ -109,7 +109,7 @@ export function FacadeGallery() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.5 }}
-          className="text-[#60a5fa] font-bold tracking-wider uppercase text-sm mb-2 block"
+          className="text-[var(--primary)] font-bold tracking-wider uppercase text-sm mb-2 block"
         >
           {t("gallery_section_badge")}
         </motion.span>
@@ -146,7 +146,7 @@ export function FacadeGallery() {
               onClick={() => setActiveFilter(filter.id)}
               className={`px-6 py-2 rounded-full text-sm font-bold transition-all ${
                 activeFilter === filter.id 
-                  ? "bg-[#60a5fa] text-black shadow-md" 
+                  ? "bg-[var(--primary)] text-black shadow-md" 
                   : "bg-muted text-muted-foreground hover:bg-muted/80"
               }`}
             >

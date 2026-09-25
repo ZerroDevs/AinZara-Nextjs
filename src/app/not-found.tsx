@@ -39,7 +39,7 @@ export default function GlobalNotFound() {
               <div className="container relative z-10 px-4 md:px-8 max-w-7xl mx-auto">
                 <div className="max-w-xl md:max-w-2xl flex flex-col items-start text-start">
                   <nav className="flex items-center gap-2 text-muted-foreground font-semibold text-[15px] mb-6">
-                    <Link href="/" className="hover:text-[#60a5fa] transition-colors">
+                    <Link href="/" className="hover:text-[var(--primary)] transition-colors">
                       {enMessages.nav_home}
                     </Link>
                     <ChevronRight className="h-4 w-4" />
