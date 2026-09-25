@@ -7,6 +7,7 @@ import { ChevronRight } from 'lucide-react';
 import { buttonVariants } from '@/components/ui/button';
 import { Outfit } from "next/font/google";
 import enMessages from '../../messages/en.json';
+import { setRequestLocale } from 'next-intl/server';
 import './globals.css';
 
 const outfit = Outfit({
@@ -15,8 +16,11 @@ const outfit = Outfit({
 });
 
 export default function GlobalNotFound() {
+  setRequestLocale('en');
+
   return (
-    <div className={`${outfit.className} antialiased min-h-screen flex flex-col bg-background text-foreground`}>
+    <html lang="en" dir="ltr" suppressHydrationWarning>
+      <body className={`${outfit.className} antialiased min-h-screen flex flex-col bg-background text-foreground`}>
         <NextIntlClientProvider locale="en" messages={enMessages}>
           <Header />
           <main className="flex-1">
@@ -58,6 +62,7 @@ export default function GlobalNotFound() {
           </main>
           <Footer />
         </NextIntlClientProvider>
-    </div>
+      </body>
+    </html>
   );
 }

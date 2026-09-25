@@ -13,6 +13,7 @@ import { Contact } from "@/components/sections/Contact";
 
 export async function generateMetadata({ params }: { params: Promise<{locale: string}> }) {
   const { locale } = await params;
+  setRequestLocale(locale);
   // Using a fallback since ServicesHero translations were slightly modified in the full json dump, but I'll use the main one.
   const mainT = await getTranslations({ locale });
   return {
