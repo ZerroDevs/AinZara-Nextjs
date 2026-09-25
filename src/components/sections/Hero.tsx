@@ -29,7 +29,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-4xl md:text-5xl lg:text-[4rem] font-bold tracking-tight text-foreground leading-[1.1] mb-6"
+            className="text-4xl md:text-5xl ltr:lg:text-[4rem] rtl:lg:text-5xl font-bold tracking-tight text-foreground ltr:leading-[1.1] rtl:leading-[1.4] mb-6"
           >
             {t("hero_title")}
           </motion.h1>
@@ -60,3 +60,4 @@ export function Hero() {
     </section>
   );
 }
+

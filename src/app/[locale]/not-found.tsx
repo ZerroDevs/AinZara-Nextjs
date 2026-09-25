@@ -36,7 +36,7 @@ export default function NotFoundPage() {
                   404
                 </span>
               </nav>
-              <h1 className="text-4xl md:text-5xl lg:text-[4rem] font-bold tracking-tight text-foreground leading-[1.1] mb-6">
+              <h1 className="text-4xl md:text-5xl ltr:lg:text-[4rem] rtl:lg:text-5xl font-bold tracking-tight text-foreground ltr:leading-[1.1] rtl:leading-[1.4] mb-6">
                 {t("page_not_found_title")}
               </h1>
               <p className="text-lg md:text-xl text-foreground mb-8 font-medium">
@@ -53,3 +53,4 @@ export default function NotFoundPage() {
     </>
   );
 }
+
