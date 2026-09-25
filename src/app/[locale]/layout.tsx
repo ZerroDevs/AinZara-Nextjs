@@ -87,7 +87,7 @@ export default async function LocaleLayout({
       <body
         className={`${fontClass} antialiased min-h-screen flex flex-col`}
       >
-        <NextIntlClientProvider messages={messages}>
+        <NextIntlClientProvider locale={locale} messages={messages}>
           <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
             {children}
             <Toaster position="bottom-right" />
@@ -97,3 +97,4 @@ export default async function LocaleLayout({
     </html>
   );
 }
+
