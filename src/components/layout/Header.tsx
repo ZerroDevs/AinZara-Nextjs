@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useTranslations, useLocale } from "next-intl";
 import { Link, usePathname, useRouter } from "@/i18n/routing";
 import { useTheme } from "next-themes";
-import { Menu, X, Moon, Sun, Globe, Phone, Home, Info, Briefcase, Camera, Layers } from "lucide-react";
+import { Menu, X, Moon, Sun, Globe, Phone, Home, Info, Briefcase, Camera, Layers, Monitor } from "lucide-react";
 import { Button, buttonVariants } from "@/components/ui/button";
 
 export function Header() {
@@ -22,6 +22,12 @@ export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
   const [isScrolled, setIsScrolled] = React.useState(false);
   const [activeSection, setActiveSection] = React.useState<string>("");
+
+  const cycleTheme = () => {
+    if (theme === "light") setTheme("dark");
+    else if (theme === "dark") setTheme("system");
+    else setTheme("light");
+  };
 
   React.useEffect(() => {
     if (pathname !== "/") return;
@@ -146,11 +152,16 @@ export function Header() {
                 variant="outline"
                 size="icon"
                 className={`rounded-full transition-colors ${isScrolled ? "bg-background border-border" : "bg-white/50 dark:bg-white/5 backdrop-blur-md border-white/20 dark:border-white/10 hover:bg-white/80 dark:hover:bg-white/10"}`}
-                onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+                onClick={cycleTheme}
                 aria-label="Toggle theme"
               >
-                <Sun className="h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-                <Moon className="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+                {mounted && theme === "dark" ? (
+                  <Moon className="h-4 w-4" />
+                ) : mounted && theme === "system" ? (
+                  <Monitor className="h-4 w-4" />
+                ) : (
+                  <Sun className="h-4 w-4" />
+                )}
               </Button>
             </div>
 
@@ -222,10 +233,15 @@ export function Header() {
             <Button
               variant="outline"
               className="w-full justify-center rounded-xl font-semibold bg-background/50 backdrop-blur border-border/40"
-              onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+              onClick={cycleTheme}
             >
-              {mounted && theme === "light" ? <Moon className="h-4 w-4 rtl:ml-2 ltr:mr-2" /> : <Sun className="h-4 w-4 rtl:ml-2 ltr:mr-2" />}
-              {mounted && theme === "light" ? "Dark Mode" : "Light Mode"}
+              {mounted && theme === "dark" ? (
+                <><Moon className="h-4 w-4 rtl:ml-2 ltr:mr-2" /> Dark Mode</>
+              ) : mounted && theme === "system" ? (
+                <><Monitor className="h-4 w-4 rtl:ml-2 ltr:mr-2" /> System</>
+              ) : (
+                <><Sun className="h-4 w-4 rtl:ml-2 ltr:mr-2" /> Light Mode</>
+              )}
             </Button>
           </div>
           

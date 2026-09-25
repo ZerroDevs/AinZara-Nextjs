@@ -88,7 +88,7 @@ export default async function LocaleLayout({
         className={`${fontClass} antialiased min-h-screen flex flex-col`}
       >
         <NextIntlClientProvider messages={messages}>
-          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
             {children}
             <Toaster position="bottom-right" />
           </ThemeProvider>
