@@ -4,8 +4,9 @@ import { useEffect } from 'react';
 
 export default function RootPage() {
   useEffect(() => {
-    window.location.replace('/ar');
+    window.location.replace('/en');
   }, []);
   
   return null;
 }
+
