@@ -11,9 +11,12 @@ import { FacadeGallery } from "@/components/sections/FacadeGallery";
 import { CtaBanner } from "@/components/sections/CtaBanner";
 import { Contact } from "@/components/sections/Contact";
 
+export function generateStaticParams() { return [{ locale: 'en' }, { locale: 'ar' }]; }
+
 export async function generateMetadata({ params }: { params: Promise<{locale: string}> }) {
   const { locale } = await params;
   // Using a fallback since ServicesHero translations were slightly modified in the full json dump, but I'll use the main one.
+  setRequestLocale(locale);
   const mainT = await getTranslations({ locale });
   return {
     title: mainT('services_page_title'),

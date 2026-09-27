@@ -8,11 +8,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Define all the core pages of the application
   const routes = [
     '',
-    '/about',
     '/services',
-    '/projects',
-    '/contact',
-    '/privacy',
+    '/works',
   ];
 
   // Map each route to a Sitemap entry, including multi-language alternate links

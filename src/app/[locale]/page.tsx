@@ -8,6 +8,8 @@ import { Products } from "@/components/sections/Products";
 import { ServicesTeaser } from "@/components/sections/ServicesTeaser";
 import { Contact } from "@/components/sections/Contact";
 
+export function generateStaticParams() { return [{ locale: 'en' }, { locale: 'ar' }]; }
+
 export default async function Home({
   params
 }: {
@@ -31,3 +33,4 @@ export default async function Home({
     </>
   );
 }
+

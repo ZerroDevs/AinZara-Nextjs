@@ -27,6 +27,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  setRequestLocale(locale);
   const t = await getTranslations({ locale });
   
   return {
@@ -100,3 +101,7 @@ export default async function LocaleLayout({
     </html>
   );
 }
+
+export const dynamicParams = false;
+
+export const dynamic = "force-static";
