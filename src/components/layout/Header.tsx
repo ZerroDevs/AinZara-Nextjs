@@ -81,7 +81,14 @@ export function Header() {
 
   const toggleLang = () => {
     const nextLocale = locale === "en" ? "ar" : "en";
-    router.replace(pathname, { locale: nextLocale });
+    // Clean the pathname from any existing locale prefix to prevent /ar/ar issues in production
+    let cleanPathname = pathname;
+    if (cleanPathname.startsWith(`/${locale}/`)) {
+      cleanPathname = cleanPathname.replace(`/${locale}/`, "/");
+    } else if (cleanPathname === `/${locale}`) {
+      cleanPathname = "/";
+    }
+    router.replace(cleanPathname, { locale: nextLocale });
   };
 
   const navLinks = [
