@@ -3,16 +3,19 @@
 import * as React from "react";
 import Image from "next/image";
 import { useTranslations, useLocale } from "next-intl";
-import { Link, usePathname, useRouter } from "@/i18n/routing";
+import { Link, usePathname } from "@/i18n/routing";
 import { useTheme } from "next-themes";
 import { Menu, X, Moon, Sun, Globe, Phone, Home, Info, Briefcase, Camera, Layers, Monitor } from "lucide-react";
 import { Button, buttonVariants } from "@/components/ui/button";
 
+import { usePathname as useNativePathname, useRouter as useNativeRouter } from "next/navigation";
+
 export function Header() {
   const t = useTranslations();
   const locale = useLocale();
-  const router = useRouter();
-  const pathname = usePathname();
+  const pathname = usePathname(); // next-intl pathname (keep for active links)
+  const nativeRouter = useNativeRouter();
+  const nativePathname = useNativePathname();
   const { theme, setTheme } = useTheme();
   const mounted = React.useSyncExternalStore(
     () => () => {},
@@ -81,14 +84,29 @@ export function Header() {
 
   const toggleLang = () => {
     const nextLocale = locale === "en" ? "ar" : "en";
-    // Clean the pathname from any existing locale prefix to prevent /ar/ar issues in production
-    let cleanPathname = pathname;
-    if (cleanPathname.startsWith(`/${locale}/`)) {
-      cleanPathname = cleanPathname.replace(`/${locale}/`, "/");
-    } else if (cleanPathname === `/${locale}`) {
-      cleanPathname = "/";
+    
+    // Get the exact raw path from the browser
+    let currentPath = nativePathname;
+    
+    // Strip the current locale if it exists
+    if (currentPath.startsWith('/en/') || currentPath === '/en') {
+      currentPath = currentPath.replace('/en', '');
+    } else if (currentPath.startsWith('/ar/') || currentPath === '/ar') {
+      currentPath = currentPath.replace('/ar', '');
     }
-    router.replace(cleanPathname, { locale: nextLocale });
+    
+    if (!currentPath.startsWith('/')) {
+      currentPath = '/' + currentPath;
+    }
+    
+    // Prepend the new locale ONLY if it's not the default locale (en)
+    let newPath = currentPath;
+    if (nextLocale !== 'en') {
+      newPath = `/${nextLocale}${currentPath === '/' ? '' : currentPath}`;
+    }
+    
+    // Use the native router to force the correct absolute path
+    nativeRouter.replace(newPath);
   };
 
   const navLinks = [
